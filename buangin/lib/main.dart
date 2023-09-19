@@ -1,18 +1,23 @@
+import 'dart:ffi';
+
 import 'package:buangin/constants.dart';
 import 'package:buangin/pages/landing_page/landing_page_1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter',
       theme: ThemeData(
-          primaryColor: kSecondaryColor,
-          scaffoldBackgroundColor: kPrimaryColor),
+          primaryColor: kPrimaryColor, scaffoldBackgroundColor: kPrimaryColor),
       home: const LandingPage1(),
     );
   }

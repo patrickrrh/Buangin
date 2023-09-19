@@ -1,3 +1,4 @@
+import 'package:buangin/pages/landing_page/components/body.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage1 extends StatelessWidget {
@@ -5,6 +6,8 @@ class LandingPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+      body: Body(),
+    );
   }
 }
