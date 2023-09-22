@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:buangin/constants.dart';
-import 'package:buangin/pages/landing_page/landing_page_1.dart';
+import 'package:buangin/pages/landing_page/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter',
       theme: ThemeData(
           primaryColor: kPrimaryColor, scaffoldBackgroundColor: kPrimaryColor),
-      home: const LandingPage1(),
+      home: const HomePage(),
     );
   }
 }
