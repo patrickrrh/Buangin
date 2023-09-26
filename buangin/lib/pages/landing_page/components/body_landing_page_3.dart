@@ -1,5 +1,5 @@
+import 'package:buangin/pages/landing_page/home_page.dart';
 import "package:flutter/material.dart";
-import "package:flutter_svg/flutter_svg.dart";
 
 class BodyLP3 extends StatelessWidget {
   const BodyLP3({super.key});
@@ -33,15 +33,17 @@ class BodyLP3 extends StatelessWidget {
           ),
           Positioned(
             bottom: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset(
-                  "assets/icons/arrow_right.svg",
-                ),
-                const SizedBox(width: 5),
-                const Text("Geser")
-              ],
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const HomePage();
+                    },
+                  ),
+                );
+              },
+              child: const Text('Mulai'),
             ),
           )
         ]));
