@@ -1,3 +1,4 @@
+import 'package:buangin/pages/landing_page/home_page.dart';
 import "package:buangin/pages/login_page/login_page.dart";
 import "package:buangin/widget_components/rounded_button.dart";
 import "package:flutter/material.dart";
