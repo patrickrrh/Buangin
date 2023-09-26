@@ -1,5 +1,6 @@
+import "package:buangin/pages/login_page/login_page.dart";
+import "package:buangin/widget_components/rounded_button.dart";
 import "package:flutter/material.dart";
-import "package:flutter_svg/flutter_svg.dart";
 
 class BodyLP3 extends StatelessWidget {
   const BodyLP3({super.key});
@@ -32,18 +33,17 @@ class BodyLP3 extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                SvgPicture.asset(
-                  "assets/icons/arrow_right.svg",
-                ),
-                const SizedBox(width: 5),
-                const Text("Geser")
-              ],
-            ),
-          )
+              bottom: 80,
+              child: RoundedButton(
+                key: const Key('button_login'),
+                text: "Mulai",
+                press: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
+              ))
         ]));
   }
 }
