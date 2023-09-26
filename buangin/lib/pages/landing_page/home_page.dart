@@ -238,7 +238,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -264,7 +265,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+                  margin:
+                      const EdgeInsets.only(left: 30, right: 30, bottom: 30),
                   child: Row(
                     children: [
                       ClipRRect(
@@ -311,8 +313,9 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                        ), 
-                      ), const Spacer(),
+                        ),
+                      ),
+                      const Spacer(),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Container(
@@ -357,7 +360,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                        ), 
+                        ),
                       ),
                     ],
                   ),

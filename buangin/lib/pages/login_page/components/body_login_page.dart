@@ -1,5 +1,5 @@
 import 'package:buangin/constants.dart';
-import 'package:buangin/pages/login_page/login_page.dart';
+import 'package:buangin/pages/landing_page/home_page.dart';
 import 'package:buangin/widget_components/checkboxs.dart';
 import 'package:buangin/widget_components/rounded_button.dart';
 import 'package:buangin/widget_components/text_field_container.dart';
@@ -32,6 +32,9 @@ class LogPag extends StatelessWidget {
               child: const TextFieldContainer(
                   key: Key('TB_Login'),
                   child: TextField(
+                      // onChanged: (value) {
+                      //   \value;
+                      // },
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 11),
                           hintText: "E-Mail",
@@ -70,12 +73,12 @@ class LogPag extends StatelessWidget {
               top: size.height * 0.65,
               child: RoundedButton(
                 key: const Key('button_login'),
-                text: "Mulai",
+                text: "Masuk",
                 press: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                          builder: (context) => const HomePage()));
                 },
               ))
         ]));
