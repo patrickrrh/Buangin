@@ -1,4 +1,5 @@
-import 'package:buangin/pages/landing_page/home_page.dart';
+import "package:buangin/pages/login_page/login_page.dart";
+import "package:buangin/widget_components/rounded_button.dart";
 import "package:flutter/material.dart";
 
 class BodyLP3 extends StatelessWidget {
@@ -32,20 +33,17 @@ class BodyLP3 extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 80,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const HomePage();
-                    },
-                  ),
-                );
-              },
-              child: const Text('Mulai'),
-            ),
-          )
+              bottom: 80,
+              child: RoundedButton(
+                key: const Key('button_login'),
+                text: "Mulai",
+                press: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                },
+              ))
         ]));
   }
 }
