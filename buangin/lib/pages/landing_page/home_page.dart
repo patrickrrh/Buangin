@@ -1,3 +1,5 @@
+import 'package:buangin/pages/landing_page/angkutin_page.dart';
+import 'package:buangin/pages/landing_page/jualin_landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:buangin/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -17,6 +19,7 @@ class _HomePageState extends State<HomePage> {
         //   title: const Text('Buangin'),
         // ),
         body: Container(
+          padding: const EdgeInsets.all(20),
           color: Colors.white,
           child: SingleChildScrollView(
             child: Column(
@@ -24,58 +27,54 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 35,
                 ),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          const CircleAvatar(backgroundColor: kThirdColor),
-                          Container(
-                            margin: const EdgeInsets.only(left: 15),
-                            child: const Column(
-                              children: [
-                                Text(
-                                  'Nama',
-                                  style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: kThirdColor,
-                                    decoration: TextDecoration.none,
-                                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const CircleAvatar(backgroundColor: kThirdColor),
+                        Container(
+                          margin: const EdgeInsets.only(left: 15),
+                          child: const Column(
+                            children: [
+                              Text(
+                                'Nama',
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: kThirdColor,
+                                  decoration: TextDecoration.none,
                                 ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.location_on,
-                                        color: kSecondaryColor),
-                                    Text(
-                                      'Lokasi',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 9,
-                                        fontWeight: FontWeight.w500,
-                                        color: kThirdColor,
-                                        decoration: TextDecoration.none,
-                                      ),
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on,
+                                      color: kSecondaryColor),
+                                  Text(
+                                    'Lokasi',
+                                    style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 9,
+                                      fontWeight: FontWeight.w500,
+                                      color: kThirdColor,
+                                      decoration: TextDecoration.none,
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      Image.asset('assets/images/notification.png'),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                    Image.asset('assets/images/notification.png'),
+                  ],
                 ),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-                  margin: const EdgeInsets.only(
-                      top: 40, bottom: 10, left: 20, right: 20),
+                  margin: const EdgeInsets.only(top: 40, bottom: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
@@ -98,147 +97,151 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  height: 170,
-                  margin: const EdgeInsets.only(top: 5, left: 20, right: 20),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: kThirdColor,
-                                  borderRadius: BorderRadius.circular(32)),
-                              margin: const EdgeInsets.only(top: 20),
-                            ),
-                            Align(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    constraints:
-                                        const BoxConstraints(maxWidth: 160),
-                                    margin: const EdgeInsets.only(
-                                        top: 50, left: 30),
-                                    child: const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Angkutin',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: kPrimaryColor,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Solusi cepat untuk mengurangi perabotan bekas anda',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.normal,
-                                            color: kPrimaryColor,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      top: 60,
-                                    ),
-                                    padding: const EdgeInsets.only(bottom: 30),
-                                    child: Image.asset(
-                                      'assets/images/angkutinLogo.png',
-                                      width: 150,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                  height: 150,
+                  margin: const EdgeInsets.only(top: 20),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const AngkutinPage();
+                          },
                         ),
-                      ),
-                    ],
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kThirdColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32),
+                        )),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                constraints:
+                                    const BoxConstraints(maxWidth: 160),
+                                margin:
+                                    const EdgeInsets.only(top: 20, left: 10),
+                                child: const Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Angkutin',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: kPrimaryColor,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Solusi cepat untuk mengurangi perabotan bekas anda',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.normal,
+                                        color: kPrimaryColor,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 60),
+                                padding: const EdgeInsets.only(bottom: 30),
+                                child: Image.asset(
+                                  'assets/images/angkutinLogo.png',
+                                  width: 140,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(
-                  height: 170,
-                  margin: const EdgeInsets.only(top: 5, left: 20, right: 20),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: kThirdColor,
-                                  borderRadius: BorderRadius.circular(32)),
-                              margin: const EdgeInsets.only(top: 20),
-                            ),
-                            Align(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    constraints:
-                                        const BoxConstraints(maxWidth: 160),
-                                    margin: const EdgeInsets.only(
-                                        top: 50, left: 30),
-                                    child: const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Jualin',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold,
-                                            color: kPrimaryColor,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Hasilkan uang dari perabotan bekas anda',
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.normal,
-                                            color: kPrimaryColor,
-                                            decoration: TextDecoration.none,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(
-                                      top: 60,
-                                    ),
-                                    padding: const EdgeInsets.only(bottom: 30),
-                                    child: Image.asset(
-                                      'assets/images/jualinLogo.png',
-                                      width: 150,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                  height: 150,
+                  margin: const EdgeInsets.only(top: 20),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const JualinLandingPage();
+                          },
                         ),
-                      ),
-                    ],
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kThirdColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32),
+                        )),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                constraints:
+                                    const BoxConstraints(maxWidth: 160),
+                                margin:
+                                    const EdgeInsets.only(top: 20, left: 10),
+                                child: const Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Jualin',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: kPrimaryColor,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Hasilkan uang dari perabotan bekas anda',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.normal,
+                                        color: kPrimaryColor,
+                                        decoration: TextDecoration.none,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.only(left: 20, top: 40),
+                                padding: const EdgeInsets.only(bottom: 30),
+                                child: Image.asset(
+                                  'assets/images/jualinLogo.png',
+                                  width: 120,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -264,17 +267,29 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+                  margin:
+                      const EdgeInsets.only(left: 10, right: 10, bottom: 30),
                   child: Row(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          width: 155,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                            color: kThirdColor,
-                          ),
+                      SizedBox(
+                        width: 155,
+                        height: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return const AngkutinPage();
+                                },
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.all(0),
+                              backgroundColor: kThirdColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
                           child: Column(
                             children: [
                               Image.asset(
@@ -311,16 +326,28 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                        ), 
-                      ), const Spacer(),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          width: 155,
-                          height: 200,
-                          decoration: const BoxDecoration(
-                            color: kThirdColor,
-                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                        width: 155,
+                        height: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return const AngkutinPage();
+                                },
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.all(0),
+                              backgroundColor: kThirdColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
                           child: Column(
                             children: [
                               Image.asset(
@@ -357,7 +384,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                        ), 
+                        ),
                       ),
                     ],
                   ),
