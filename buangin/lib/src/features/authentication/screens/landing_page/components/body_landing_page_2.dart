@@ -1,33 +1,39 @@
+import "package:buangin/constants.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 
-class BodyLP1 extends StatelessWidget {
-  const BodyLP1({super.key});
+class BodyLP2 extends StatelessWidget {
+  const BodyLP2({super.key});
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    // buat kasih tau ukuran panjang dan lebar layar
+
     return SizedBox(
-      height: size.height,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
+        height: size.height,
+        width: double.infinity,
+        child: Stack(alignment: Alignment.center, children: <Widget>[
           Positioned(
-            top: 270,
+            top: size.height * 0.2,
             child: Image.asset(
-              'assets/images/Logo_Buangin.png',
-              width: size.width * 0.3,
+              'assets/images/LP2.png',
+              width: size.width * 0.8,
             ),
           ),
           const Positioned(
             bottom: 300,
             child: FittedBox(
               child: SizedBox(
-                width: 190, // Set the desired width here
+                width: 284, // Set the desired width here
                 child: Text(
-                  "Aplikasi Marketplace dan Pembuangan Perabotan Bekas Anda",
+                  "Dirancang untuk membantu anda membuangkan sampah perabotan anda atau menjualnya kepada pembeli",
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: kThirdColor,
+                    decoration: TextDecoration.none,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -46,8 +52,6 @@ class BodyLP1 extends StatelessWidget {
               ],
             ),
           )
-        ],
-      ),
-    );
+        ]));
   }
 }

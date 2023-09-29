@@ -1,8 +1,8 @@
 import 'package:buangin/constants.dart';
-import 'package:buangin/pages/landing_page/home_page.dart';
-import 'package:buangin/widget_components/checkboxs.dart';
-import 'package:buangin/widget_components/rounded_button.dart';
-import 'package:buangin/widget_components/text_field_container.dart';
+import 'package:buangin/src/features/authentication/screens/home_page/home_page.dart';
+import 'package:buangin/src/widget_components/checkboxs.dart';
+import 'package:buangin/src/widget_components/rounded_button.dart';
+import 'package:buangin/src/widget_components/text_field_container.dart';
 import 'package:flutter/material.dart';
 
 class LogPag extends StatelessWidget {

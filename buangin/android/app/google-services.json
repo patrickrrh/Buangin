@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "911574348396",
+    "project_id": "buangin-4ff8e",
+    "storage_bucket": "buangin-4ff8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911574348396:android:84000ea2b81c5c229a9e49",
+        "android_client_info": {
+          "package_name": "com.example.buangin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp-HVQ_bKHZnqOPIN98dlXsYb9WQtXlpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

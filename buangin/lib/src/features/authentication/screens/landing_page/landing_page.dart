@@ -1,6 +1,6 @@
-import 'package:buangin/pages/landing_page/landing_page_1.dart';
-import 'package:buangin/pages/landing_page/landing_page_2.dart';
-import 'package:buangin/pages/landing_page/landing_page_3.dart';
+import 'package:buangin/src/features/authentication/screens/landing_page/landing_page_1.dart';
+import 'package:buangin/src/features/authentication/screens/landing_page/landing_page_2.dart';
+import 'package:buangin/src/features/authentication/screens/landing_page/landing_page_3.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {

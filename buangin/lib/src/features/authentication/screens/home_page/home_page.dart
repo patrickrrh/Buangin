@@ -1,5 +1,5 @@
-import 'package:buangin/pages/landing_page/angkutin_page.dart';
-import 'package:buangin/pages/landing_page/jualin_landing_page.dart';
+import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
+import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:buangin/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';

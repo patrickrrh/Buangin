@@ -1,5 +1,5 @@
 import 'package:buangin/constants.dart';
-import 'package:buangin/pages/landing_page/jualin_page.dart';
+import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_page.dart';
 import 'package:flutter/material.dart';
 
 class JualinLandingPage extends StatelessWidget {
