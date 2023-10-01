@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value) => Get.put(AuthenticationRepository()));
+  Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
   runApp(const MyApp());
 }
 
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
       theme: ThemeData(
-          primaryColor: kPrimaryColor, scaffoldBackgroundColor: kPrimaryColor),
+          fontFamily: 'Poppins',
+          primaryColor: kPrimaryColor,
+          scaffoldBackgroundColor: kPrimaryColor),
       home: const LandingPage(),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
+import 'package:buangin/src/features/authentication/screens/beliin_page/beliin_page.dart';
 import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_landing_page.dart';
 import 'package:flutter/material.dart';
 import 'package:buangin/constants.dart';
@@ -242,10 +243,10 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         'Beliin',
                         style: TextStyle(
                             fontFamily: 'Poppins',
@@ -254,15 +255,22 @@ class _HomePageState extends State<HomePage> {
                             color: kThirdColor,
                             decoration: TextDecoration.none),
                       ),
-                      Text(
-                        'Lihat semua',
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                            color: kThirdColor,
-                            decoration: TextDecoration.none),
-                      )
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (BuildContext context) {
+                              return const BeliinPage();
+                            }));
+                          },
+                          child: const Text(
+                            'Lihat semua',
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                                color: kThirdColor,
+                                decoration: TextDecoration.none),
+                          ))
                     ],
                   ),
                 ),
