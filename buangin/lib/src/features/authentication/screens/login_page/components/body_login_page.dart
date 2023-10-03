@@ -60,7 +60,7 @@ class LogPag extends StatelessWidget {
                   children: [CheckBoxs(), Text("Ingat Saya")],
                 ),
                 SizedBox(
-                  width: 110,
+                  width: 90,
                 ),
                 Text(
                   "Lupa Password?",
