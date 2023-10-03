@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: kPrimaryColor),
-      home: const LandingPage(),
+      home: const CircularProgressIndicator(),
     );
   }
 }

@@ -1,4 +1,6 @@
+import 'package:buangin/src/features/authentication/models/user_model.dart';
 import 'package:buangin/src/repository/user_repository/authentication_repository/authentication_repository.dart';
+import 'package:buangin/src/repository/user_repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,15 +13,17 @@ class RegisterController extends GetxController{
   final password = TextEditingController();
   final nomorTelepon = TextEditingController();
 
-Future<bool> registerUser(String email, String password) async {
-  try {
-    await AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password);
-    // If registration is successful, return true
-    return true;
-  } catch (e) {
-    // If registration fails, return false
-    return false;
+  final userRepo = Get.put(UserRepository());
+
+void registerUser(String email, String password) {
+  String? error = AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password) as String?;
+  if(error != null){
+    Get.showSnackbar(GetSnackBar(message: error.toString()));
   }
+}
+
+Future<void> createUser(UserModel user) async {
+  await userRepo.createUser(user);
 }
 
 

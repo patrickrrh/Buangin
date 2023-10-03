@@ -18,171 +18,188 @@ class RegisterPage extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(30),
           margin: const EdgeInsets.only(top: 100),
-          child: Column(children: [
-            Align(
+          child: Column(
+            children: [
+              Align(
                 alignment: Alignment.center,
                 child: Image.asset(
                   'assets/images/Buat_Akun.png',
                   width: 200,
-                )),
-            Container(
-              margin: const EdgeInsets.only(top: 30),
-              child: const Text(
-                'Buat Akun',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: kThirdColor,
-                  decoration: TextDecoration.none,
                 ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 40),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    TextFormField(
-                      controller: controller.username,
-                      decoration: const InputDecoration(
-                          label: Text('Nama pengguna',
-                              style: TextStyle(
-                                  color: kThirdColor,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14)),
-                          border: OutlineInputBorder(),
+              Container(
+                margin: const EdgeInsets.only(top: 30),
+                child: const Text(
+                  'Buat Akun',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: kThirdColor,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 40),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                        controller: controller.username,
+                        decoration: const InputDecoration(
+                          labelText: 'Nama pengguna',
                           prefixIcon: Icon(
                             Icons.person_outline_rounded,
                             color: kThirdColor,
                           ),
-                          labelStyle: TextStyle(color: kThirdColor),
                           focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: kThirdColor))),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      controller: controller.email,
-                      decoration: const InputDecoration(
-                          label: Text('Email',
-                              style: TextStyle(
-                                  color: kThirdColor,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14)),
-                          border: OutlineInputBorder(),
+                            borderSide:
+                                BorderSide(width: 2, color: kThirdColor),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Nama pengguna harus diisi';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: controller.email,
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
                           prefixIcon: Icon(
                             Icons.email,
                             color: kThirdColor,
                           ),
-                          labelStyle: TextStyle(color: kThirdColor),
                           focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: kThirdColor))),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      controller: controller.password,
-                      decoration: const InputDecoration(
-                          label: Text('Password',
-                              style: TextStyle(
-                                  color: kThirdColor,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14)),
-                          border: OutlineInputBorder(),
+                            borderSide:
+                                BorderSide(width: 2, color: kThirdColor),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Email must not be empty';
+                          }
+
+                          // Regular expression for a simple email format validation
+                          final emailRegExp =
+                              RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+
+                          if (!emailRegExp.hasMatch(value)) {
+                            return 'Invalid email format';
+                          }
+
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: controller.password,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
                           prefixIcon: Icon(
                             Icons.password,
                             color: kThirdColor,
                           ),
-                          labelStyle: TextStyle(color: kThirdColor),
                           focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: kThirdColor))),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      controller: controller.nomorTelepon,
-                      decoration: const InputDecoration(
-                          label: Text('Nomor telepon',
-                              style: TextStyle(
-                                  color: kThirdColor,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14)),
-                          border: OutlineInputBorder(),
+                            borderSide:
+                                BorderSide(width: 2, color: kThirdColor),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Password harus diisi';
+                          }
+                          // Add more password validation logic here if needed
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        controller: controller.nomorTelepon,
+                        decoration: const InputDecoration(
+                          labelText: 'Nomor telepon',
                           prefixIcon: Icon(
                             Icons.call,
                             color: kThirdColor,
                           ),
-                          labelStyle: TextStyle(color: kThirdColor),
                           focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 2, color: kThirdColor))),
-                    ),
-                    const SizedBox(height: 30),
-                    SizedBox(
-                      height: 50,
-                      width: double.infinity,
-child: ElevatedButton(
-  onPressed: () {
-    if (formKey.currentState!.validate()) {
-      // You validate the form fields here.
+                            borderSide:
+                                BorderSide(width: 2, color: kThirdColor),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Nomor telepon harus diisi';
+                          }
 
-      // Then, you create a UserModel instance.
-      final user = UserModel(
-        email: controller.email.text.trim(),
-        password: controller.password.text.trim(),
-      );
+                          // Remove any non-digit characters from the input
+                          final cleanedValue =
+                              value.replaceAll(RegExp(r'[^\d]'), '');
 
-      // Now, you should register the user using the RegisterController instance.
-      RegisterController.instance.registerUser(user).then((success) {
-        if (success) {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) {
-                return const HomePage();
-              },
-            ),
-          );
-        } else {
-          // Handle registration failure by displaying a snackbar.
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Registration failed. Please try again.'),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      });
-    }
-  },
-  style: ElevatedButton.styleFrom(
-    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-    backgroundColor: kSecondaryColor,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(5),
-    ),
-  ),
-  child: const Text(
-    'Daftar',
-    style: TextStyle(
-      fontFamily: 'Poppins',
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-      color: kPrimaryColor,
-      // Set the text color to match the border color
-      decoration: TextDecoration.none,
-    ),
-  ),
-),
+                          // Check if the cleaned value is a valid phone number
+                          if (cleanedValue.length < 10 ||
+                              cleanedValue.length > 15) {
+                            return 'Nomor telepon tidak valid';
+                          }
 
-                    )
-                  ],
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 30),
+                      SizedBox(
+                        height: 50,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              // Create a UserModel instance.
+                              final user = UserModel(
+                                email: controller.email.text.trim(),
+                                password: controller.password.text.trim(),
+                                fullName: controller.username.text.trim(),
+                                phoneNumber:
+                                    controller.nomorTelepon.text.trim(),
+                              );
+
+                              // Register the user using the RegisterController instance.
+                              RegisterController.instance.createUser(user);
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
+                            backgroundColor: kSecondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                          child: const Text(
+                            'Daftar',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor,
+                              // Set the text color to match the border color
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )
-          ]),
+            ],
+          ),
         ),
       ),
     );

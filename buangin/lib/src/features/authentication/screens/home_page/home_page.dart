@@ -1,3 +1,4 @@
+import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_landing_page.dart';
 import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
 import 'package:buangin/src/features/authentication/screens/beliin_page/beliin_page.dart';
 import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_landing_page.dart';
@@ -74,10 +75,15 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Image.asset('assets/images/notification.png'),
                         IconButton(
-                          onPressed: () async {
-                            await AuthenticationRepository.instance.lougout();
+                          onPressed: () {
+                             // Add this line for debugging
+                            AuthenticationRepository.instance.logout();
+                            
                           },
-                          icon: const Icon(Icons.logout, color: kThirdColor,),
+                          icon: const Icon(
+                            Icons.logout,
+                            color: kThirdColor,
+                          ),
                         )
                       ],
                     )
@@ -116,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const AngkutinPage();
+                            return const AngkutinLandingPage();
                           },
                         ),
                       );

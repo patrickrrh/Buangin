@@ -1,15 +1,19 @@
 import 'package:buangin/constants.dart';
+import 'package:buangin/src/features/authentication/controllers/register/register_controller.dart';
 import 'package:buangin/src/features/authentication/screens/home_page/home_page.dart';
+import 'package:buangin/src/repository/user_repository/authentication_repository/authentication_repository.dart';
 import 'package:buangin/src/widget_components/checkboxs.dart';
 import 'package:buangin/src/widget_components/rounded_button.dart';
 import 'package:buangin/src/widget_components/text_field_container.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LogPag extends StatelessWidget {
   const LogPag({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(RegisterController());
     Size size = MediaQuery.of(context).size;
 
     return SizedBox(
@@ -69,18 +73,37 @@ class LogPag extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-              top: size.height * 0.65,
-              child: RoundedButton(
-                key: const Key('button_login'),
-                text: "Masuk",
-                press: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const HomePage()));
-                },
-              ))
+                        Positioned(
+                top: size.height * 0.65,
+                child: RoundedButton(
+                  key: const Key('button_login'),
+                  text: "Masuk",
+                  press: () async {
+                    final email = controller.email.text.trim();
+                    final password = controller.password.text.trim();
+
+                    try {
+                      // Call the login method from the authentication repository
+                      await AuthenticationRepository().loginUserWithEmailAndPassword(
+                        email,
+                        password,
+                        context
+                      );
+
+                      // If login is successful, navigate to the home page
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    } catch (e) {
+                      // Handle login failure, display an error message, etc.
+                      print("Login failed: $e");
+                    }
+                  },
+                ),
+              ),
         ]));
   }
 }
