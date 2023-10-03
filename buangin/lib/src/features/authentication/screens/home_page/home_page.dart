@@ -1,5 +1,6 @@
 import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
 import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_landing_page.dart';
+import 'package:buangin/src/repository/user_repository/authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:buangin/constants.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -68,7 +69,17 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    Image.asset('assets/images/notification.png'),
+                    Row(
+                      children: [
+                        Image.asset('assets/images/notification.png'),
+                        IconButton(
+                          onPressed: () async {
+                            await AuthenticationRepository.instance.lougout();
+                          },
+                          icon: const Icon(Icons.logout, color: kThirdColor,),
+                        )
+                      ],
+                    )
                   ],
                 ),
                 Container(

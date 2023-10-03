@@ -11,8 +11,16 @@ class RegisterController extends GetxController{
   final password = TextEditingController();
   final nomorTelepon = TextEditingController();
 
-  void registerUser(String email, String password){
-    AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password);
+Future<bool> registerUser(String email, String password) async {
+  try {
+    await AuthenticationRepository.instance.createUserWithEmailAndPassword(email, password);
+    // If registration is successful, return true
+    return true;
+  } catch (e) {
+    // If registration fails, return false
+    return false;
   }
+}
+
 
 }

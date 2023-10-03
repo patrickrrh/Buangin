@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
       theme: ThemeData(
           primaryColor: kPrimaryColor, scaffoldBackgroundColor: kPrimaryColor),
-      home: const LandingPage(),
+      home: const CircularProgressIndicator(),
     );
   }
 }

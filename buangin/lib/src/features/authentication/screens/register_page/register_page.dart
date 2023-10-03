@@ -1,5 +1,6 @@
 import 'package:buangin/constants.dart';
 import 'package:buangin/src/features/authentication/controllers/register/register_controller.dart';
+import 'package:buangin/src/features/authentication/models/user_model.dart';
 import 'package:buangin/src/features/authentication/screens/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -123,39 +124,59 @@ class RegisterPage extends StatelessWidget {
                     SizedBox(
                       height: 50,
                       width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if(formKey.currentState!.validate()){
-                            RegisterController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
-                          }
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) {
-                                return const HomePage();
-                              },
-                            ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          backgroundColor: kSecondaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        child: const Text(
-                          'Masuk',
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color:
-                                kPrimaryColor, // Set the text color to match the border color
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                      ),
+child: ElevatedButton(
+  onPressed: () {
+    if (formKey.currentState!.validate()) {
+      // You validate the form fields here.
+
+      // Then, you create a UserModel instance.
+      final user = UserModel(
+        email: controller.email.text.trim(),
+        password: controller.password.text.trim(),
+      );
+
+      // Now, you should register the user using the RegisterController instance.
+      RegisterController.instance.registerUser(user).then((success) {
+        if (success) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const HomePage();
+              },
+            ),
+          );
+        } else {
+          // Handle registration failure by displaying a snackbar.
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Registration failed. Please try again.'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      });
+    }
+  },
+  style: ElevatedButton.styleFrom(
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+    backgroundColor: kSecondaryColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5),
+    ),
+  ),
+  child: const Text(
+    'Daftar',
+    style: TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: kPrimaryColor,
+      // Set the text color to match the border color
+      decoration: TextDecoration.none,
+    ),
+  ),
+),
+
                     )
                   ],
                 ),
