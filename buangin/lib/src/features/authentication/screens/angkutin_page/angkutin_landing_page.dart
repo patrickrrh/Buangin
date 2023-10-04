@@ -1,7 +1,6 @@
-import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
+// import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:buangin/constants.dart';
-
 
 class AngkutinLandingPage extends StatelessWidget {
   const AngkutinLandingPage({super.key});
@@ -71,14 +70,16 @@ class AngkutinLandingPage extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const AngkutinPage();
+                      return const AngkutinLandingPage();
                     },
                   ),
                 );
               },
               style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                side: const BorderSide(color: kThirdColor, width: 2), // Specify the border color
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                side: const BorderSide(
+                    color: kThirdColor, width: 2), // Specify the border color
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

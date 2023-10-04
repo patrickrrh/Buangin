@@ -1,5 +1,5 @@
 import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_landing_page.dart';
-import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
+// import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
 import 'package:buangin/src/features/authentication/screens/beliin_page/beliin_page.dart';
 import 'package:buangin/src/features/authentication/screens/jualin_page/jualin_landing_page.dart';
 import 'package:buangin/src/repository/user_repository/authentication_repository/authentication_repository.dart';
@@ -76,9 +76,8 @@ class _HomePageState extends State<HomePage> {
                         Image.asset('assets/images/notification.png'),
                         IconButton(
                           onPressed: () {
-                             // Add this line for debugging
+                            // Add this line for debugging
                             AuthenticationRepository.instance.logout();
-                            
                           },
                           icon: const Icon(
                             Icons.logout,
@@ -304,7 +303,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return const AngkutinPage();
+                                  return const AngkutinLandingPage();
                                 },
                               ),
                             );
@@ -362,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (BuildContext context) {
-                                  return const AngkutinPage();
+                                  return const AngkutinLandingPage();
                                 },
                               ),
                             );

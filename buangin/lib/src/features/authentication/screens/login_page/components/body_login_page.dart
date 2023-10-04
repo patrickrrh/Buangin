@@ -8,8 +8,27 @@ import 'package:buangin/src/widget_components/text_field_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LogPag extends StatelessWidget {
+class LogPag extends StatefulWidget {
   const LogPag({super.key});
+
+  @override
+  State<LogPag> createState() => _LogPagState();
+}
+
+class _LogPagState extends State<LogPag> {
+  TextEditingController emailControllers = TextEditingController();
+  TextEditingController pwdControllers = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    emailControllers = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailControllers.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +52,22 @@ class LogPag extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800))),
           Positioned(
               top: size.height * 0.4,
-              child: const TextFieldContainer(
-                  key: Key('TB_Login'),
+              child: TextFieldContainer(
+                  key: const Key('TB_Login'),
                   child: TextField(
-                      // onChanged: (value) {
-                      //   \value;
-                      // },
-                      decoration: InputDecoration(
+                      controller: controller.email,
+                      decoration: const InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 11),
                           hintText: "E-Mail",
                           border: InputBorder.none)))),
           Positioned(
               top: size.height * 0.495,
-              child: const TextFieldContainer(
-                  key: Key('TB_Login'),
+              child: TextFieldContainer(
+                  key: const Key('TB_Login'),
                   child: TextField(
+                      controller: controller.password,
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           contentPadding: EdgeInsets.symmetric(vertical: 11),
                           hintText: "Password",
                           border: InputBorder.none)))),
@@ -73,37 +91,33 @@ class LogPag extends StatelessWidget {
               ],
             ),
           ),
-                        Positioned(
-                top: size.height * 0.65,
-                child: RoundedButton(
-                  key: const Key('button_login'),
-                  text: "Masuk",
-                  press: () async {
-                    final email = controller.email.text.trim();
-                    final password = controller.password.text.trim();
+          Positioned(
+            top: size.height * 0.65,
+            child: RoundedButton(
+              key: const Key('button_login'),
+              text: "Masuk",
+              press: () async {
+                try {
+                  // Call the login method from the authentication repository
+                  AuthenticationRepository().loginUserWithEmailAndPassword(
+                      controller.email.text.trim(),
+                      controller.password.text.trim(),
+                      context);
 
-                    try {
-                      // Call the login method from the authentication repository
-                      await AuthenticationRepository().loginUserWithEmailAndPassword(
-                        email,
-                        password,
-                        context
-                      );
-
-                      // If login is successful, navigate to the home page
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
-                    } catch (e) {
-                      // Handle login failure, display an error message, etc.
-                      print("Login failed: $e");
-                    }
-                  },
-                ),
-              ),
+                  // If login is successful, navigate to the home page
+                  // Navigator.push(patrick
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const HomePage(),
+                  //   ),
+                  // );
+                } catch (e) {
+                  // Handle login failure, display an error message, etc.
+                  print("Login failed: $e");
+                }
+              },
+            ),
+          ),
         ]));
   }
 }

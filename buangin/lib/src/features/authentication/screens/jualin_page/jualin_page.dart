@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:buangin/constants.dart';
-import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_page.dart';
+import 'package:buangin/src/features/authentication/screens/angkutin_page/angkutin_landing_page.dart';
+import 'package:buangin/src/features/authentication/screens/home_page/home_page.dart';
 import 'package:buangin/src/widget_components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -201,7 +202,7 @@ class _JualinPageState extends State<JualinPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const AngkutinPage()));
+                                  builder: (context) => const HomePage()));
                         },
                       ),
                     )

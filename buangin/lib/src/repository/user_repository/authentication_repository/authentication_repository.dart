@@ -1,10 +1,10 @@
 import 'package:buangin/src/exceptions/register_email_password_failure.dart';
 import 'package:buangin/src/features/authentication/screens/home_page/home_page.dart';
 import 'package:buangin/src/features/authentication/screens/landing_page/landing_page.dart';
+import 'package:buangin/src/features/authentication/screens/login_page/login_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -30,7 +30,9 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-          firebaseUser.value != null ? Get.offAll(() => const HomePage()) : Get.offAll(() => const LandingPage());
+      firebaseUser.value != null
+          ? Get.offAll(() => const HomePage())
+          : Get.offAll(() => const LandingPage());
     } on FirebaseAuthException catch (e) {
       final ex = RegisterWithEmailAndPasswordFailure.code(e.code);
       print('FIREBASE AUTH EXCEPTION - ${ex.message}');
@@ -45,6 +47,7 @@ class AuthenticationRepository extends GetxController {
   Future<void> loginUserWithEmailAndPassword(
       String email, String password, BuildContext context) async {
     try {
+      // await _auth.signInWithEmailAndPassword(email: email, password: password);
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       // Login successful, you can navigate to the home page or perform other actions.
       // For example, you can navigate to the home page using GetX:
@@ -52,11 +55,12 @@ class AuthenticationRepository extends GetxController {
     } on FirebaseAuthException catch (e) {
       // Handle specific Firebase Authentication errors here, e.g., display an error message to the user.
       // final errorMessage = e.message ?? 'An error occurred during login.';
-      
+      if (e.code == 'user-not-found') {
+        Get.showSnackbar(GetSnackBar(message: e.toString()));
+      }
     } catch (error) {
       // Handle generic login errors, if any.
       // final errorMessage = 'An error occurred during login: $error';
-      
     }
   }
 
